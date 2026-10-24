@@ -29,7 +29,7 @@ inr = lambda x: f"Rs {x:,.0f}"
 
 st.sidebar.title("Urban Thread")
 st.sidebar.caption("Regional Inventory Planner view: Meera")
-page = st.sidebar.radio("Go to", ["1. Network overview", "2. Risk drill-down", "3. Act on recommendations", "4. Action tracker", "About this prototype"])
+page = st.sidebar.radio("Go to", ["1. Network overview", "2. Risk drill-down", "3. Act on recommendations", "4. Action tracker"])
 region = st.sidebar.multiselect("Region", sorted(sig.region.unique()), default=sorted(sig.region.unique()))
 st.sidebar.caption("Data: simulated, refreshed daily. Velocity = avg daily sales, last 28 days.")
 
@@ -166,8 +166,3 @@ elif page.startswith("4"):
         if st.button("Reset demo"):
             for k in ("status", "edits", "notes"): st.session_state[k] = {}
             st.session_state.selected = None; st.rerun()
-
-# ====================================================================
-else:
-    st.title("About this prototype")
-    st.markdown(open("docs/01_thinking.md").read())
